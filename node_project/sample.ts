@@ -1,13 +1,4 @@
 const user = {
   name: Hayes,
-  id: 0,};
-
-
-
-
-
-  
-
-
-
-
+  id: 0,
+};
