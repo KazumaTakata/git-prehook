@@ -1,4 +1,4 @@
-iname =     input("What is your name?\n")
+iname =        input("What is your name?\n")
 
 
 
