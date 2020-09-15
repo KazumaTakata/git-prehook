@@ -1,0 +1,29 @@
+#!/bin/sh
+
+echo "pre-hook"
+
+FILES=$(git diff --cached --name-only --diff-filter=ACMR "*.js" "*.jsx" "*.ts" | sed 's| |\\ |g')
+[ -z "$FILES" ] && exit 0
+
+# Prettify all selected files
+echo "$FILES" | xargs prettier --write
+
+# Add back the modified/prettified files to staging
+echo "$FILES" | xargs git add
+
+
+FILES=$(git diff --cached --name-only --diff-filter=ACMR "*.py" | sed 's| |\\ |g')
+
+echo $FILES
+
+[ -z "$FILES" ] && exit 0
+
+# Prettify all selected files
+echo "$FILES" | xargs black 
+
+# Add back the modified/prettified files to staging
+echo "$FILES" | xargs git add
+
+
+
+exit 0
